@@ -1,37 +1,32 @@
-import AppBootstrap from "@/components/layout/app-bootstrap";
 import KBar from "@/components/kbar";
 import AppSidebar from "@/components/layout/app-sidebar";
 import Header from "@/components/layout/header";
 import { InfoSidebar } from "@/components/layout/info-sidebar";
+import { SocketProvider } from "@/components/layout/providers/socket-provider";
 import { InfobarProvider } from "@/components/ui/infobar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
-import { SocketProvider } from "@/components/layout/providers/socket-provider";
 
-export default async function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
 
   return (
-    <AppBootstrap>
-      <SocketProvider>
-        <KBar>
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <SidebarInset>
-              <Header />
-              <InfobarProvider defaultOpen={false}>
-                {children}
-                <InfoSidebar side="right" />
-              </InfobarProvider>
-            </SidebarInset>
-          </SidebarProvider>
-        </KBar>
-      </SocketProvider>
-    </AppBootstrap>
+    // <AppBootstrap>
+    <SocketProvider>
+      <KBar>
+        <SidebarProvider defaultOpen={defaultOpen}>
+          <AppSidebar />
+          <SidebarInset>
+            <Header />
+            <InfobarProvider defaultOpen={false}>
+              {children}
+              <InfoSidebar side="right" />
+            </InfobarProvider>
+          </SidebarInset>
+        </SidebarProvider>
+      </KBar>
+    </SocketProvider>
+    // </AppBootstrap>
   );
 }

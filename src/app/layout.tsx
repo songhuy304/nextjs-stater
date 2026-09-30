@@ -1,17 +1,17 @@
 import Providers from "@/components/layout/providers";
-import { Toaster } from "@/components/ui/sonner";
+import ReduxProvider from "@/components/layout/redux-provider";
 import { fontVariables } from "@/components/themes/font.config";
-import { DEFAULT_THEME, THEMES } from "@/components/themes/theme.config";
 import ThemeProvider from "@/components/themes/theme-provider";
+import { DEFAULT_THEME, THEMES } from "@/components/themes/theme.config";
+import { Toaster } from "@/components/ui/sonner";
+import { createMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 import type { Viewport } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { cookies } from "next/headers";
 import NextTopLoader from "nextjs-toploader";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "../styles/globals.css";
-import ReduxProvider from "@/components/layout/redux-provider";
-import { NextIntlClientProvider } from "next-intl";
-import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata("RecruitHub");
 
@@ -24,11 +24,7 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
   const activeThemeValue = cookieStore.get("active_theme")?.value;
   const isValidTheme = THEMES.some((t) => t.value === activeThemeValue);
@@ -53,7 +49,7 @@ export default async function RootLayout({
       <body
         className={cn(
           "bg-background overflow-x-hidden overscroll-none font-sans antialiased",
-          fontVariables,
+          fontVariables
         )}
       >
         <NextIntlClientProvider>

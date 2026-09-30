@@ -1,4 +1,5 @@
 "use client";
+import { Logo } from "@/components/logo";
 import {
   Collapsible,
   CollapsibleContent,
@@ -26,21 +27,18 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarRail,
 } from "@/components/ui/sidebar";
 import { UserAvatarProfile } from "@/components/user-avatar-profile";
 import { navGroups } from "@/config/nav-config";
+import { useLogout } from "@/features/auth/hooks";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useFilteredNavGroups } from "@/hooks/use-nav";
+import { useAppSelector } from "@/hooks/useRedux";
+import { selectUser } from "@/store";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
 import { Icons } from "../icons";
-import { OrgSwitcher } from "../org-switcher";
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectUser } from "@/store";
-import { Button } from "@/components/ui/button";
-import { useLogout } from "@/features/auth/hooks";
 
 export default function AppSidebar() {
   const pathname = usePathname();
@@ -55,16 +53,14 @@ export default function AppSidebar() {
   }, [isOpen]);
 
   return (
-    <Sidebar variant="inset" collapsible="icon">
-      <SidebarHeader className="group-data-[collapsible=icon]:pt-4">
-        <OrgSwitcher />
+    <Sidebar variant="floating" collapsible="icon">
+      <SidebarHeader className="px-4 py-3 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:px-0">
+        <Logo />
       </SidebarHeader>
       <SidebarContent className="overflow-x-hidden">
         {filteredGroups.map((group) => (
           <SidebarGroup key={group.label || "ungrouped"} className="py-0">
-            {group.label && (
-              <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
-            )}
+            {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
             <SidebarMenu>
               {group.items.map((item) => {
                 const Icon = item.icon ? Icons[item.icon] : Icons.logo;
@@ -177,7 +173,7 @@ export default function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
-      <SidebarRail />
+      {/* <SidebarRail /> */}
     </Sidebar>
   );
 }

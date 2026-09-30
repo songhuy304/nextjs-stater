@@ -15,3 +15,9 @@ export const JOB_PATHS = {
   JOBS: "/jobs",
   CREATE_JOB: "/jobs/create",
 };
+
+export const PATHS = {
+  ...AUTH_PATHS,
+  ...TEAM_PATHS,
+  ...JOB_PATHS,
+};

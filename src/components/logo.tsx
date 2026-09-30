@@ -7,28 +7,26 @@ interface LogoProps {
   withText?: boolean;
   isLink?: boolean;
   width?: number;
-  height?: number;
+  iconClassName?: string;
+  textClassName?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({
   className,
   withText = true,
+
   isLink = true,
-  width = 26,
-  height = 24,
+  textClassName = "text-lg",
+  iconClassName = "w-[26px] h-[24px]",
 }) => {
   return (
     <div className={cn("text-sidebar-foreground relative z-20", className)}>
-      <Link
-        href={isLink ? "/" : "#"}
-        className="flex items-center text-lg font-medium"
-      >
+      <Link href={isLink ? "/" : "#"} className="flex items-center font-medium">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={width}
-          height={height}
           viewBox="0 0 36 33"
           fill="none"
+          className={cn(iconClassName)}
         >
           <path
             d="M0 0H28.8C31.3202 0 32.5804 0 33.543 0.490471C34.3897 0.921901 35.0781 1.61031 35.5095 2.45704C36 3.41965 36 4.67976 36 7.2V9H7.2C4.67976 9 3.41965 9 2.45704 8.50953C1.61031 8.0781 0.921901 7.38969 0.490471 6.54296C0 5.58035 0 4.32024 0 1.8V0Z"
@@ -43,7 +41,16 @@ const Logo: React.FC<LogoProps> = ({
             fill="#FF5629"
           />
         </svg>
-        {withText && <span className="ml-4">RecruitHub</span>}
+        {withText && (
+          <span
+            className={cn(
+              "ml-2 whitespace-nowrap group-data-[collapsible=icon]:hidden font-bold",
+              textClassName
+            )}
+          >
+            RFlow
+          </span>
+        )}
       </Link>
     </div>
   );
