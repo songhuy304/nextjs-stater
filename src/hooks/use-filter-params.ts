@@ -1,4 +1,5 @@
 import { createQueryParams, toQueryParams } from "@/lib/searchparams";
+import { usePathname, useRouter } from "next/navigation";
 import {
   inferParserType,
   useQueryStates,
@@ -17,6 +18,8 @@ export function useFilterParams<TParsers extends UseQueryStatesKeysMap>({
   defaultFilters,
 }: UseFilterParamsOptions<TParsers>) {
   type TValues = inferParserType<TParsers>;
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [params, setParams] = useQueryStates(parsers);
 
@@ -49,5 +52,16 @@ export function useFilterParams<TParsers extends UseQueryStatesKeysMap>({
     } as Partial<Nullable<Values<TParsers>>>);
   };
 
-  return { params, defaultValues, setParams, handleSubmit, handleReset };
+  const handleClearFilters = () => {
+    void router.push(pathname);
+  };
+
+  return {
+    params,
+    defaultValues,
+    setParams,
+    handleSubmit,
+    handleReset,
+    handleClearFilters,
+  };
 }

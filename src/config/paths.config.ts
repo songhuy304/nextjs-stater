@@ -6,18 +6,7 @@ export const AUTH_PATHS = {
   REFRESH_TOKEN: "/auth/refresh-token",
 };
 
-export const TEAM_PATHS = {
-  TEAMS: "/teams",
-  CREATE_TEAM: "/teams/create",
-};
-
-export const JOB_PATHS = {
-  JOBS: "/jobs",
-  CREATE_JOB: "/jobs/create",
-};
-
 export const PATHS = {
-  ...AUTH_PATHS,
-  ...TEAM_PATHS,
-  ...JOB_PATHS,
+  DASHBOARD: "/dashboard",
+  WORKFLOWS: "/workflows",
 };
