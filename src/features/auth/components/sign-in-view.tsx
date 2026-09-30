@@ -1,24 +1,22 @@
 "use client";
+import { Typography } from "@/components/ui/typography";
+import { AUTH_PATHS } from "@/config/paths.config";
 import SignInForm from "@/features/auth/forms/sign-in.form";
-import { setTokens } from "@/store";
+import { tokenStorage } from "@/lib/auth";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useQueryState } from "nuqs";
 import { toast } from "sonner";
 import { useLoginSocial, useSignIn } from "../hooks";
 import { SignInFormValues } from "../shemas";
-import GoogleSignInButton from "./google-auth-button";
 import GithubSignInButton from "./github-auth-button";
-import { Typography } from "@/components/ui/typography";
-import Link from "next/link";
-import { AUTH_PATHS } from "@/config/paths.config";
-import { useQueryState } from "nuqs";
-import { useTranslations } from "next-intl";
+import GoogleSignInButton from "./google-auth-button";
 
 export default function SignInViewPage() {
   const t = useTranslations();
   const [redirectUrl] = useQueryState("redirect");
   const router = useRouter();
-  const dispatch = useDispatch();
   const { mutate: signIn, isPending } = useSignIn();
   const { loginWithGoogle, loginWithGithub } = useLoginSocial();
 
@@ -26,7 +24,7 @@ export default function SignInViewPage() {
     signIn(values, {
       onSuccess: (data) => {
         toast.success(t("SignIn.sign-in-success"));
-        dispatch(setTokens(data.data));
+        tokenStorage.setTokens(data.data);
         router.push(redirectUrl || "/");
       },
       onError: (error) => {
