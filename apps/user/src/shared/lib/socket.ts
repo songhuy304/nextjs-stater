@@ -14,7 +14,7 @@ export const connectSocket = (token: string) => {
     },
 
     transports: ['websocket'],
-    autoConnect: true,
+    autoConnect: false,
     reconnectionAttempts: 5
   });
 

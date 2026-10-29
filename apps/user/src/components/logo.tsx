@@ -1,3 +1,4 @@
+import { APP_NAME } from '@/shared/config/app.config';
 import { cn } from '@repo/ui/lib/utils';
 import Link from 'next/link';
 import React from 'react';
@@ -48,7 +49,7 @@ const Logo: React.FC<LogoProps> = ({
               textClassName
             )}
           >
-            ReFlows
+            {APP_NAME}
           </span>
         )}
       </Link>

@@ -81,7 +81,7 @@ const fontJetBrainsMono = JetBrains_Mono({
 
 const fontMerriweather = Merriweather({
   subsets: ['latin'],
-  weight: ['300', '400', '700'],
+  weight: 'variable',
   variable: '--font-merriweather'
 });
 
