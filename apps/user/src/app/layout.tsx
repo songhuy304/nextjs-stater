@@ -1,11 +1,11 @@
-import Providers from '@/components/layout/providers';
-import ReduxProvider from '@/components/layout/redux-provider';
+import Providers from '@/components/layout/providers/providers';
+import ReduxProvider from '@/components/layout/providers/redux-provider';
 import { fontVariables } from '@/components/themes/font.config';
 import ThemeProvider from '@/components/themes/theme-provider';
 import { DEFAULT_THEME, THEMES } from '@/components/themes/theme.config';
+import { createMetadata } from '@/shared/lib/metadata';
 import { Toaster } from '@repo/ui/components/ui/sonner';
-import { createMetadata } from '@/lib/metadata';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import type { Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { cookies } from 'next/headers';

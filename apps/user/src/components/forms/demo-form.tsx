@@ -32,7 +32,7 @@ import { Label } from '@repo/ui/components/ui/label';
 import { format } from 'date-fns';
 import type { DateRange } from 'react-day-picker';
 import { Icons } from '@repo/ui/components/icons';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 // Schema (form-level safety net — onSubmit catches anything field-level missed)
 const demoFormSchema = z.object({
@@ -740,6 +740,7 @@ export default function DemoForm() {
                           <input
                             id={field.name}
                             type='color'
+                            aria-label='Favorite Color'
                             value={field.state.value}
                             onChange={(e) => field.handleChange(e.target.value)}
                             className='h-9 w-12 cursor-pointer rounded-md border p-1'

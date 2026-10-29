@@ -9,7 +9,7 @@ import { Button } from '@repo/ui/components/ui/button';
 import { Calendar } from '@repo/ui/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@repo/ui/components/ui/popover';
 import { Separator } from '@repo/ui/components/ui/separator';
-import { formatDate } from '@/lib/format';
+import { formatDate } from '@/shared/lib/format';
 
 type DateSelection = Date[] | DateRange;
 

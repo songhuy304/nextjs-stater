@@ -1,4 +1,4 @@
-import { apiClient } from '@/lib/axios';
+import { apiClient } from '@/shared/lib/axios';
 import { IPaginatedResponse, IResponse } from '@/types/api.type';
 import { ICountUnread, IGetNotificationsParams, INotification } from '../types';
 

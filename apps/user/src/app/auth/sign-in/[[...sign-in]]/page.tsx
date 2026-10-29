@@ -1,5 +1,5 @@
 import SignInViewPage from '@/features/auth/components/sign-in-view';
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/shared/lib/metadata';
 
 export const metadata = createMetadata('Sign In', 'Sign In page for authentication.');
 

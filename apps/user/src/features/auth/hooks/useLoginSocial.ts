@@ -1,4 +1,4 @@
-import { LOGIN_GITHUB_URL, LOGIN_GOOGLE_URL } from '@/config/app.config';
+import { LOGIN_GITHUB_URL, LOGIN_GOOGLE_URL } from '@/shared/config/app.config';
 
 export const useLoginSocial = () => {
   const loginWithGoogle = () => {

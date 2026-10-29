@@ -1,4 +1,4 @@
-import { apiClient } from '@/lib/axios';
+import { apiClient } from '@/shared/lib/axios';
 import { IResponse } from '@/types/api.type';
 import { IChangePassword, IUpdateProfile } from '../types';
 

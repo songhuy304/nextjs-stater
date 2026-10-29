@@ -1,12 +1,12 @@
 'use client';
 
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import SignUpForm from '../forms/sign-up.form';
 import { useSignup } from '../hooks';
 import { SignUpFormValues } from '../shemas';
-import { useRouter } from 'next/navigation';
-import { AUTH_PATHS } from '@/config/paths.config';
-import { useTranslations } from 'next-intl';
 
 export default function SignUpViewPage() {
   const t = useTranslations();

@@ -1,5 +1,5 @@
-import { PASSWORD_REGEX } from '@/constants';
-import { TFunction } from '@/i18n/config';
+import { PASSWORD_REGEX } from '@/features/auth/constants';
+import { TFunction } from '@/shared/i18n/config';
 import { z } from 'zod';
 
 export const updateProfileSchema = (t: TFunction) =>

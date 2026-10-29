@@ -6,7 +6,7 @@ import {
   CardTitle
 } from '@repo/ui/components/ui/card';
 import { Typography } from '@repo/ui/components/ui/typography';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 interface ProfileSectionCardProps {
   title?: string;

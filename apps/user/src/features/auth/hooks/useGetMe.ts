@@ -1,6 +1,6 @@
-import { QUERY_KEY } from '@/config/query-keys';
-import { tokenStorage } from '@/lib/auth';
-import { userService } from '@/services';
+import { tokenStorage } from '@/shared/lib/auth';
+import { userService } from '@/shared/services';
+import { QUERY_KEY } from '@/shared/config/query-keys';
 import { useQuery } from '@tanstack/react-query';
 
 interface UseGetMeOptions {

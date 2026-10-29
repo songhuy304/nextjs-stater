@@ -6,7 +6,7 @@ import { Icons } from '@repo/ui/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/components/ui/avatar';
 import { Button } from '@repo/ui/components/ui/button';
 import { Typography } from '@repo/ui/components/ui/typography';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 interface ProfileAvatarUploadProps {
   avatarUrl?: string;

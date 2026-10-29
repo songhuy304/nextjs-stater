@@ -13,7 +13,7 @@ import {
   CommandList
 } from '@repo/ui/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@repo/ui/components/ui/popover';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import * as React from 'react';
 import { CheckIcon, CaretSortIcon } from '@radix-ui/react-icons';
 

@@ -12,7 +12,7 @@ import {
   FormFieldSet,
   createFormField
 } from '@repo/ui/components/ui/form-context';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 interface TagInputFieldProps {
   label?: React.ReactNode;

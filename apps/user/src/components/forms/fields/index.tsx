@@ -10,7 +10,6 @@ export { FileUploadField } from './file-upload-field';
 export { DatePickerField } from './date-picker-field';
 export { DateRangePickerField } from './date-range-picker-field';
 export { TagInputField } from './input-tags-field';
-export { TextEditorField } from './text-editor-field';
 export { TagsField } from './tag-field';
 export { ComboboxField } from './combobox-field';
 
@@ -26,6 +25,5 @@ export { FormFileUploadField } from './file-upload-field';
 export { FormDatePickerField } from './date-picker-field';
 export { FormDateRangePickerField } from './date-range-picker-field';
 export { FormTagInputField } from './input-tags-field';
-export { FormTextEditorField } from './text-editor-field';
 export { FormTagsField } from './tag-field';
 export { FormComboboxField } from './combobox-field';

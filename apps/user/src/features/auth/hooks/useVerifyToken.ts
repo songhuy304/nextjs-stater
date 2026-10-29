@@ -1,5 +1,5 @@
-import { authService } from '@/services';
-import { IVerifyTokenRequest } from '@/services/auth/auth.type';
+import { authService } from '@/shared/services';
+import { IVerifyTokenRequest } from '@/shared/services/auth/auth.type';
 import { useMutation } from '@tanstack/react-query';
 
 const useVerifyToken = () => {

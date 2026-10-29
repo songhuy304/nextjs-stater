@@ -1,4 +1,4 @@
-import { TFunction } from '@/i18n/config';
+import { TFunction } from '@/shared/i18n/config';
 import { z } from 'zod';
 
 export const signInSchema = (t: TFunction) =>

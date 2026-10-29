@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger
 } from '@repo/ui/components/ui/dropdown-menu';
 import { UserAvatarProfile } from '@/components/user-avatar-profile';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/shared/hooks/useUser';
 import { useRouter } from 'next/navigation';
 export function UserNav() {
   const { user } = useUser();

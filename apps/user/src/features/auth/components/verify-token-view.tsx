@@ -1,9 +1,9 @@
 'use client';
 
+import { useAppDispatch } from '@/shared/hooks/useRedux';
+import { tokenStorage } from '@/shared/lib/auth';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
 import { Spinner } from '@repo/ui/components/ui/spinner';
-import { AUTH_PATHS } from '@/config/paths.config';
-import { useAppDispatch } from '@/hooks/useRedux';
-import { tokenStorage } from '@/lib/auth';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';

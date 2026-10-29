@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@repo/ui/components/ui/select';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 import { getPageItems } from './get-page-items';
 

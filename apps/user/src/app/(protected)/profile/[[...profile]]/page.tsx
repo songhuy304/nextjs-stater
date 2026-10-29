@@ -1,5 +1,5 @@
 import { ProfileView } from '@/features/profile/profile-view';
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/shared/lib/metadata';
 
 export const metadata = createMetadata('Profile', '');
 

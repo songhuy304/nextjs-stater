@@ -13,7 +13,7 @@ import {
 } from '@repo/ui/components/ui/form-context';
 import { Badge } from '@repo/ui/components/ui/badge';
 import { Icons } from '@repo/ui/components/icons';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 interface TagsFieldProps {
   label?: React.ReactNode;
@@ -69,13 +69,13 @@ export function TagsField({
             hasError ? 'border-destructive focus-within:ring-destructive' : 'border-input',
             className
           )}
-          onClick={() => inputRef.current?.focus()}
         >
           {values.map((tag, idx) => (
             <Badge key={tag} variant='secondary' className='h-5 gap-1 text-[11px]'>
               {tag}
               <button
                 type='button'
+                aria-label={`Remove ${tag}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   removeTag(idx);
@@ -102,6 +102,7 @@ export function TagsField({
             }}
             onBlur={field.handleBlur}
             aria-invalid={hasError}
+            aria-label={typeof label === 'string' ? label : 'Tags'}
             placeholder={values.length === 0 ? placeholder : ''}
             className='min-w-20 flex-1 border-none bg-transparent p-0 text-sm outline-none placeholder:text-muted-foreground'
           />

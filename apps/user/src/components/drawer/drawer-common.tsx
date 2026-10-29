@@ -10,8 +10,8 @@ import {
   DrawerTitle
 } from '@repo/ui/components/ui/drawer';
 import { Button, ButtonProps } from '@repo/ui/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/shared/hooks/use-mobile';
+import { cn } from '@repo/ui/lib/utils';
 import { Spinner } from '@repo/ui/components/ui/spinner';
 
 interface CommonDrawerProps {

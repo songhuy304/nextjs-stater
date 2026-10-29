@@ -1,7 +1,7 @@
-import { QUERY_KEY } from '@/config/query-keys';
-import type { INotification } from '../types';
+import { QUERY_KEY } from '@/shared/config/query-keys';
 import type { IPaginatedResponse, IResponse } from '@/types/api.type';
 import type { InfiniteData, QueryClient, QueryKey } from '@tanstack/react-query';
+import type { INotification } from '../types';
 
 type NotificationsListData = IPaginatedResponse<INotification>;
 type InfiniteNotificationsData = InfiniteData<NotificationsListData, number>;

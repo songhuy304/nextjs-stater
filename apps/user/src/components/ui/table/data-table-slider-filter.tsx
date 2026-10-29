@@ -9,7 +9,7 @@ import { Label } from '@repo/ui/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@repo/ui/components/ui/popover';
 import { Separator } from '@repo/ui/components/ui/separator';
 import { Slider } from '@repo/ui/components/ui/slider';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import { Icons } from '@repo/ui/components/icons';
 
 interface Range {

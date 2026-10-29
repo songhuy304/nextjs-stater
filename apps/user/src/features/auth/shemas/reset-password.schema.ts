@@ -1,4 +1,4 @@
-import { PASSWORD_REGEX } from '@/constants';
+import { PASSWORD_REGEX } from '@/features/auth/constants';
 import z from 'zod';
 
 export const resetPasswordFormSchema = z

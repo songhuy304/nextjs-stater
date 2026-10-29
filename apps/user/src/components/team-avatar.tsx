@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback } from '@repo/ui/components/ui/avatar';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import { AvatarImage } from '@radix-ui/react-avatar';
 
 interface TeamAvatarProps {

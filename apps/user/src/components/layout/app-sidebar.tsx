@@ -1,5 +1,13 @@
 'use client';
 import { Logo } from '@/components/logo';
+import { UserAvatarProfile } from '@/components/user-avatar-profile';
+import { useLogout } from '@/features/auth/hooks';
+import { useMediaQuery } from '@/shared/hooks/use-media-query';
+import { useFilteredNavGroups } from '@/shared/hooks/use-nav';
+import { useAppSelector } from '@/shared/hooks/useRedux';
+import { navGroups } from '@/shared/config/nav-config';
+import { selectUser } from '@/shared/store';
+import { Icons } from '@repo/ui/components/icons';
 import {
   Collapsible,
   CollapsibleContent,
@@ -28,17 +36,9 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem
 } from '@repo/ui/components/ui/sidebar';
-import { UserAvatarProfile } from '@/components/user-avatar-profile';
-import { navGroups } from '@/config/nav-config';
-import { useLogout } from '@/features/auth/hooks';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import { useFilteredNavGroups } from '@/hooks/use-nav';
-import { useAppSelector } from '@/hooks/useRedux';
-import { selectUser } from '@/store';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
-import { Icons } from '@repo/ui/components/icons';
 
 export default function AppSidebar() {
   const pathname = usePathname();

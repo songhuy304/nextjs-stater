@@ -7,7 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@repo/ui/components/ui/breadcrumb';
-import { useBreadcrumbs } from '@/hooks/use-breadcrumbs';
+import { useBreadcrumbs } from '@/shared/hooks/use-breadcrumbs';
 import { Icons } from '@repo/ui/components/icons';
 import { Fragment } from 'react';
 

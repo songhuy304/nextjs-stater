@@ -1,4 +1,6 @@
 import { useSocket } from '@/components/layout/providers/socket-provider';
+import { invalidateQueries } from '@/shared/lib/query-client';
+import { QUERY_KEY } from '@/shared/config/query-keys';
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
@@ -8,8 +10,6 @@ import {
   MemberJoinedTeamData,
   NOTIFICATION_EVENT
 } from '../types';
-import { QUERY_KEY } from '@/config/query-keys';
-import { invalidateQueries, invalidateQuery } from '@/lib/query-client';
 
 const NotificationListener = () => {
   const { socket } = useSocket();

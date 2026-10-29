@@ -8,8 +8,9 @@ import { toast } from 'sonner';
 
 import { Button } from '@repo/ui/components/ui/button';
 import { Progress } from '@repo/ui/components/ui/progress';
-import { useControllableState } from '@/hooks/use-controllable-state';
-import { cn, formatBytes } from '@/lib/utils';
+import { useControllableState } from '@/shared/hooks/use-controllable-state';
+import { formatBytes } from '@/shared/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import { Typography } from '@repo/ui/components/ui/typography';
 import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/components/ui/avatar';
 

@@ -1,8 +1,8 @@
+import { useAppDispatch } from '@/shared/hooks/useRedux';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { logout } from '@/shared/store/slices/auth.slice';
 import { useQueryClient } from '@tanstack/react-query';
-import { logout } from '@/store/slices/auth.slice';
-import { useAppDispatch } from '@/hooks/useRedux';
 import { useRouter } from 'next/navigation';
-import { AUTH_PATHS } from '@/config/paths.config';
 
 export function useLogout() {
   const dispatch = useAppDispatch();

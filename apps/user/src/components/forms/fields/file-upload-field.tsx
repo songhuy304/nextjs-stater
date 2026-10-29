@@ -14,7 +14,7 @@ import {
   createFormField
 } from '@repo/ui/components/ui/form-context';
 
-import { useUploadFile } from '@/hooks/use-upload-file';
+import { useUploadFile } from '@/shared/hooks/use-upload-file';
 
 interface FileUploadFieldProps {
   label?: string;

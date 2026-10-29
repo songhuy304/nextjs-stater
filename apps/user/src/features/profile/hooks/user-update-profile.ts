@@ -1,4 +1,4 @@
-import { QUERY_KEY } from '@/config/query-keys';
+import { QUERY_KEY } from '@/shared/config/query-keys';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';

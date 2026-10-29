@@ -1,10 +1,10 @@
 'use client';
 
 import { useAppForm, useFormFields } from '@/components/ui/tanstack-form';
-import { AUTH_PATHS } from '@/config/paths.config';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { SignInFormValues, signInSchema } from '../shemas';
-import { useTranslations } from 'next-intl';
 
 interface SignInFormProps {
   onSubmit: (values: SignInFormValues) => void;

@@ -1,9 +1,9 @@
 'use client';
 import { NotificationListener } from '@/features/notifications/listeners/notification-listener';
-import { useAppSelector } from '@/hooks/useRedux';
-import { tokenStorage } from '@/lib/auth';
-import { connectSocket, disconnectSocket } from '@/lib/socket';
-import { selectIsAuthenticated } from '@/store';
+import { useAppSelector } from '@/shared/hooks/useRedux';
+import { tokenStorage } from '@/shared/lib/auth';
+import { connectSocket, disconnectSocket } from '@/shared/lib/socket';
+import { selectIsAuthenticated } from '@/shared/store';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
 

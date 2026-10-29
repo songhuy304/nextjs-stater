@@ -1,9 +1,9 @@
 'use client';
 
 import { useAppForm, useFormFields } from '@/components/ui/tanstack-form';
-import { AUTH_PATHS } from '@/config/paths.config';
 import GoogleSignInButton from '@/features/auth/components/google-auth-button';
 import { signUpFormSchema, SignUpFormValues } from '@/features/auth/shemas';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import GithubSignInButton from '../components/github-auth-button';

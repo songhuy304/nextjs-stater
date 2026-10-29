@@ -1,22 +1,22 @@
 'use client';
 
-import { Locale } from '@/i18n/config';
-import { setUserLocale } from '@/i18n/locale';
-import { useLocale } from 'next-intl';
-import { startTransition } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
+import { Locale } from '@/shared/i18n/config';
+import { setUserLocale } from '@/shared/i18n/locale';
 import { Button } from '@repo/ui/components/ui/button';
-import { US, VN } from 'country-flag-icons/react/3x2';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@repo/ui/components/ui/tooltip';
+import { US, VN } from 'country-flag-icons/react/3x2';
+import { useLocale } from 'next-intl';
 import { useTopLoader } from 'nextjs-toploader';
+import { startTransition } from 'react';
 
-const loader = useTopLoader();
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 export default function LocaleSwitcher({ className }: LanguageSwitcherProps) {
   const locale = useLocale();
+  const loader = useTopLoader();
 
   const LocaleConfig: Record<Locale, { label: string; icon: React.ReactNode }> = {
     en: { label: 'Switch to Vietnamese', icon: <US /> },

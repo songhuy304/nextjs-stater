@@ -1,5 +1,5 @@
-import { AUTH_PATHS } from '@/config/paths.config';
 import { VerifyTokenView } from '@/features/auth/components/verify-token-view';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 

@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger
 } from '@repo/ui/components/ui/dropdown-menu';
 import { Typography } from '@repo/ui/components/ui/typography';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 import type { ActiveDevice } from '../types/active-device';
 

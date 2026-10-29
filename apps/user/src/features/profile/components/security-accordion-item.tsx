@@ -4,7 +4,7 @@ import {
   AccordionTrigger
 } from '@repo/ui/components/ui/accordion';
 import { Typography } from '@repo/ui/components/ui/typography';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 interface SecurityAccordionItemProps {
   value: string;

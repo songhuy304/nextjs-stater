@@ -8,7 +8,7 @@ import { Button } from '@repo/ui/components/ui/button';
 import { useAppForm, useFormFields } from '@/components/ui/tanstack-form';
 import { Typography } from '@repo/ui/components/ui/typography';
 
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/shared/hooks/useUser';
 import { updateProfileSchema, type UpdateProfileFormValues } from '../schemas/profile.schema';
 import { useUpdateProfile } from '../hooks/user-update-profile';
 import { profileMapper } from '../mappers';

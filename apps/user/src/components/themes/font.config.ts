@@ -15,7 +15,7 @@ import {
   Space_Mono
 } from 'next/font/google';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 const fontSans = Geist({
   subsets: ['latin'],

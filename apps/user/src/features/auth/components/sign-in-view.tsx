@@ -1,8 +1,8 @@
 'use client';
-import { Typography } from '@repo/ui/components/ui/typography';
-import { AUTH_PATHS } from '@/config/paths.config';
 import SignInForm from '@/features/auth/forms/sign-in.form';
-import { tokenStorage } from '@/lib/auth';
+import { tokenStorage } from '@/shared/lib/auth';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { Typography } from '@repo/ui/components/ui/typography';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

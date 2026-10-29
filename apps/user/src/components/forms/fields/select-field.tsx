@@ -16,7 +16,7 @@ import {
   FormFieldError,
   createFormField
 } from '@repo/ui/components/ui/form-context';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 
 export type Option = { value: string; label: React.ReactNode };
 

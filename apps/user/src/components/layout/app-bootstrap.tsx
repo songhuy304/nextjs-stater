@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { LoadingPage } from '../loading-page';
-import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
-import { tokenStorage } from '@/lib/auth';
-import { selectIsLoading, setUser } from '@/store';
-import { AUTH_PATHS } from '@/config/paths.config';
 import { useGetMe } from '@/features/auth/hooks';
+import { useAppDispatch, useAppSelector } from '@/shared/hooks/useRedux';
+import { tokenStorage } from '@/shared/lib/auth';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { selectIsLoading, setUser } from '@/shared/store';
+import { LoadingPage } from '../loading-page';
 
 export default function AppBootstrap({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();

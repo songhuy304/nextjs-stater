@@ -1,14 +1,14 @@
 'use client';
 
+import { IResetPasswordRequest } from '@/shared/services/auth/auth.type';
+import { AUTH_PATHS } from '@/shared/config/paths.config';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import { toast } from 'sonner';
 import ResetPasswordForm from '../forms/reset-password-form';
 import { useResetPassword } from '../hooks/useResetPassword';
 import { ResetPasswordValues } from '../shemas';
-import { IResetPasswordRequest } from '@/services/auth/auth.type';
-import { useQueryState } from 'nuqs';
-import { AUTH_PATHS } from '@/config/paths.config';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 
 const ResetPasswordViewPage = () => {
   const t = useTranslations();

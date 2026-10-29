@@ -1,5 +1,5 @@
 import { ForgotPasswordViewPage } from '@/features/auth/components/forgot-password-view';
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/shared/lib/metadata';
 
 export const metadata = createMetadata(
   'Forgot Password',

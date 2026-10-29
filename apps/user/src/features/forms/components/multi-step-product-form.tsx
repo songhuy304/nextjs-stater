@@ -9,7 +9,7 @@ import { Icons } from '@repo/ui/components/icons';
 import { FieldDescription } from '@repo/ui/components/ui/field';
 import { Progress } from '@repo/ui/components/ui/progress';
 import { motion, AnimatePresence } from 'motion/react';
-import { useFormStepper } from '@/hooks/use-stepper';
+import { useFormStepper } from '@/shared/hooks/use-stepper';
 import { Button } from '@repo/ui/components/ui/button';
 import { Separator } from '@repo/ui/components/ui/separator';
 

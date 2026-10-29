@@ -2,7 +2,7 @@ import { Logo } from '@/components/logo';
 import Quote from '@/components/quote';
 import { buttonVariants } from '@repo/ui/components/ui/button';
 import { InteractiveGridPattern } from '@/features/auth/components/interactive-grid';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import { Metadata } from 'next';
 import Link from 'next/link';
 

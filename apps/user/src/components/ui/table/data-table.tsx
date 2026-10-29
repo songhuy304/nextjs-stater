@@ -10,10 +10,10 @@ import {
   TableHeader,
   TableRow
 } from '@repo/ui/components/ui/table';
-import { getCommonPinningStyles } from '@/lib/data-table';
+import { getCommonPinningStyles } from '@/shared/lib/data-table';
 import { ScrollArea, ScrollBar } from '@repo/ui/components/ui/scroll-area';
 import { Spinner } from '@repo/ui/components/ui/spinner';
-import { cn } from '@/lib/utils';
+import { cn } from '@repo/ui/lib/utils';
 import { Icons } from '@repo/ui/components/icons';
 
 interface DataTableProps<TData> extends React.ComponentProps<'div'> {
