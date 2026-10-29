@@ -6,7 +6,7 @@ This file provides essential information for AI coding agents working on this pr
 
 ## Project Overview
 
-**Next.js Admin Dashboard Starter** is a production-ready admin dashboard template built with:
+**ReFlows** is a Next.js user application in a Bun Workspace/Turborepo monorepo:
 
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript 5.7
@@ -26,8 +26,8 @@ The project follows a feature-based folder structure designed for scalability in
 
 ### Core Framework & Runtime
 
-- Next.js 16.0.10 with App Router
-- React 19.2.0
+- Next.js 16.2.6 with App Router
+- React 19.2.4
 - TypeScript 5.7.2 with strict mode enabled
 
 ### Styling & UI
@@ -49,7 +49,7 @@ The project follows a feature-based folder structure designed for scalability in
 - Server-side prefetching with `HydrationBoundary` + `dehydrate`
 - Client-side `useQuery` + nuqs `shallow: true` for tables (no RSC round-trips on pagination/filter)
 - `useMutation` + `invalidateQueries` for form submissions
-- Query client singleton in `src/lib/query-client.ts`
+- Query client singleton in `apps/user/src/lib/query-client.ts`
 
 ### Authentication & Authorization
 
@@ -64,14 +64,14 @@ The project follows a feature-based folder structure designed for scalability in
 - TanStack React Query for data fetching and mutations
 - Recharts for analytics/charts
 - Service layer per feature (`api/types.ts` → `api/service.ts` → `api/queries.ts`)
-- Route handlers at `src/app/api/` (for Route Handler or BFF patterns)
-- Mock data in `src/constants/mock-api*.ts` (default, swap via service layer)
-- API client utility in `src/lib/api-client.ts` (for fetch-based patterns)
+- Route handlers at `apps/user/src/app/api/` (for Route Handler or BFF patterns)
+- Mock data in `apps/user/src/constants/mock-api*.ts` (default, swap via service layer)
+- API client utility in `apps/user/src/lib/api-client.ts` (for fetch-based patterns)
 
 ### Development Tools
 
-- ESLint 8.x with Next.js core-web-vitals config
-- Prettier 3.x with prettier-plugin-tailwindcss
+- Oxlint for linting
+- Oxfmt for formatting
 - Husky for git hooks
 - lint-staged for pre-commit formatting
 
@@ -80,85 +80,36 @@ The project follows a feature-based folder structure designed for scalability in
 ## Project Structure
 
 ```
-/src
-├── app/                    # Next.js App Router
-│   ├── auth/              # Authentication routes (sign-in, sign-up)
-│   ├── dashboard/         # Dashboard routes
-│   │   ├── overview/      # Parallel routes (@area_stats, @bar_stats, etc.)
-│   │   ├── product/       # Product management pages
-│   │   ├── kanban/        # Kanban board page
-│   │   ├── chat/          # Messaging page
-│   │   ├── notifications/ # Notifications page
-│   │   ├── workspaces/    # Organization management
-│   │   ├── billing/       # Subscription billing
-│   │   ├── exclusive/     # Pro plan feature example
-│   │   └── profile/       # User profile
-│   ├── api/               # API routes (if any)
-│   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Landing page
-│   ├── global-error.tsx   # Sentry-integrated error boundary
-│   └── not-found.tsx      # 404 page
-│
-├── components/
-│   ├── ui/                # shadcn/ui components (50+ components)
-│   ├── layout/            # Layout components (sidebar, header, etc.)
-│   ├── forms/             # Form field wrappers
-│   ├── themes/            # Theme system components
-│   ├── kbar/              # Command+K search bar
-│   ├── icons.tsx          # Icon registry
-│   └── ...
-│
-├── features/              # Feature-based modules
-│   ├── auth/              # Authentication components
-│   ├── overview/          # Dashboard analytics
-│   ├── products/          # Product management (React Query + nuqs)
-│   │   ├── api/
-│   │   │   ├── types.ts   # Type contract (response shapes, filters, payloads)
-│   │   │   ├── service.ts # Data access layer (swap for your backend)
-│   │   │   └── queries.ts # React Query options + key factories
-│   │   ├── components/    # Listing, form, table components
-│   │   ├── schemas/       # Zod schemas
-│   │   └── constants/     # Filter options
-│   ├── users/             # User management (React Query + nuqs)
-│   │   ├── api/           # Same pattern: types.ts → service.ts → queries.ts
-│   │   └── components/    # Listing, table components
-│   ├── react-query-demo/  # React Query showcase (Pokemon API)
-│   ├── kanban/            # Kanban board with dnd-kit
-│   ├── chat/              # Messaging UI (conversations, bubbles, composer)
-│   ├── notifications/     # Notification center & store
-│   └── profile/           # Profile management
-│
-├── config/                # Configuration files
-│   ├── nav-config.ts      # Navigation with RBAC
-│   └── ...
-│
-├── hooks/                 # Custom React hooks
-│   ├── use-nav.ts         # RBAC navigation filtering
-│   ├── use-data-table.ts  # Data table state
-│   └── ...
-│
-├── lib/                   # Utility functions
-│   ├── utils.ts           # cn() and formatters
-│   ├── searchparams.ts    # Search param utilities
-│   └── ...
-│
-├── types/                 # TypeScript type definitions
-│   └── index.ts           # Core types (NavItem, etc.)
-│
-└── styles/                # Global styles
-    ├── globals.css        # Tailwind imports + view transitions
-    ├── theme.css          # Theme imports
-    └── themes/            # Individual theme files
+apps/
+└── user/
+    ├── src/
+    │   ├── app/           # Next.js App Router
+    │   ├── components/    # App-specific layout, forms, and features
+    │   ├── features/      # Feature modules and business logic
+    │   ├── hooks/
+    │   ├── lib/           # App utilities; cn is re-exported from @repo/ui
+    │   └── styles/
+    │       └── globals.css # App Tailwind entry point importing shared theme CSS
+    ├── public/
+    ├── scripts/
+    ├── next.config.ts
+    ├── package.json
+    └── tsconfig.json
 
-/docs                      # Documentation
-│   ├── clerk_setup.md     # Clerk configuration guide
-│   ├── nav-rbac.md        # Navigation RBAC documentation
-│   └── themes.md          # Theme customization guide
+packages/
+└── ui/
+    ├── src/
+    │   ├── components/ui/ # Shared shadcn/ui components
+    │   ├── components/icons.tsx
+    │   ├── hooks/
+    │   ├── lib/           # cn and UI utilities
+    │   └── styles/        # Shared theme tokens and theme CSS
+    ├── components.json
+    └── package.json
 
-/scripts                   # Dev tooling
-    ├── cleanup.js         # Feature removal (self-contained, delete when done)
-    └── postinstall.js     # Dev server cleanup message (auto-cleans)
-
+package.json               # Bun workspace and root scripts
+bun.lock
+turbo.json
 Dockerfile                 # Node.js production Dockerfile
 Dockerfile.bun             # Bun production Dockerfile
 .dockerignore              # Docker build exclusions
@@ -172,23 +123,26 @@ Dockerfile.bun             # Bun production Dockerfile
 # Install dependencies
 bun install
 
-# Development server
-bun run dev          # Starts at http://localhost:3000
+# Develop the user app, or all apps in the workspace
+bun run dev:user
+bun run dev
 
-# Build for production
+# Build the user app, or all apps in the workspace
+bun run build:user
 bun run build
 
-# Start production server
-bun run start
+# Type-check and lint
+bun run check-types
+bun run lint
 
-# Linting
-bun run lint         # Run ESLint
-bun run lint:fix     # Fix ESLint issues and format
-bun run lint:strict  # Zero warnings tolerance
+# App-local commands
+cd apps/user && bun run dev
+cd apps/user && bun run build
+cd apps/user && bun run start
 
 # Formatting
-bun run format       # Format with Prettier
-bun run format:check # Check formatting
+bun run format
+bun run format:check
 
 # Git hooks
 bun run prepare      # Install Husky hooks
@@ -198,7 +152,7 @@ bun run prepare      # Install Husky hooks
 
 ## Environment Configuration
 
-Copy `env.example.txt` to `.env.local` and configure:
+Copy `apps/user/env.example.txt` to `apps/user/.env.local` and configure:
 
 ### Required for Authentication (Clerk)
 
@@ -282,20 +236,22 @@ The project uses a sophisticated multi-theme system with 10 built-in themes:
 
 ### Theme Files
 
-- CSS files: `src/styles/themes/{theme-name}.css`
-- Theme registry: `src/components/themes/theme.config.ts`
-- Font config: `src/components/themes/font.config.ts`
-- Active theme provider: `src/components/themes/active-theme.tsx`
+- CSS files: `packages/ui/src/styles/themes/{theme-name}.css`
+- Theme registry: `apps/user/src/components/themes/theme.config.ts`
+- Font config: `apps/user/src/components/themes/font.config.ts`
+- Active theme provider: `apps/user/src/components/themes/active-theme.tsx`
+- App CSS entry point: `apps/user/src/styles/globals.css`
+- Shared theme entry point: `packages/ui/src/styles/theme.css`
 
 ### Adding a New Theme
 
-1. Create `src/styles/themes/your-theme.css` with `[data-theme='your-theme']` selector
-2. Import in `src/styles/theme.css`
-3. Add to `THEMES` array in `src/components/themes/theme.config.ts`
+1. Create `packages/ui/src/styles/themes/your-theme.css` with `[data-theme='your-theme']` selector
+2. Import in `packages/ui/src/styles/theme.css`
+3. Add to `THEMES` array in `apps/user/src/components/themes/theme.config.ts`
 4. (Optional) Add fonts in `font.config.ts`
 5. (Optional) Set as default in `theme.config.ts`
 
-See `docs/themes.md` for detailed theming guide.
+Apps import the shared theme through their own CSS entry point so Tailwind CSS v4 processes the shared tokens and component classes.
 
 ---
 
@@ -303,7 +259,7 @@ See `docs/themes.md` for detailed theming guide.
 
 ### Navigation Configuration
 
-Navigation is organized into groups in `src/config/nav-config.ts`:
+Navigation is organized into groups in `apps/user/src/config/nav-config.ts`:
 
 ```typescript
 import { NavGroup } from '@/types';
@@ -335,7 +291,7 @@ export const navGroups: NavGroup[] = [
 
 ### Client-Side Filtering
 
-The `useFilteredNavItems()` hook in `src/hooks/use-nav.ts` filters navigation client-side using Clerk's `useOrganization()` and `useUser()` hooks. This is for UX only - actual security checks must happen server-side.
+The `useFilteredNavItems()` hook in `apps/user/src/hooks/use-nav.ts` filters navigation client-side using Clerk's `useOrganization()` and `useUser()` hooks. This is for UX only - actual security checks must happen server-side.
 
 ---
 
@@ -386,7 +342,7 @@ const hasFeature = has({ feature: 'premium_access' });
 Each feature has a three-file API layer:
 
 ```
-src/features/<name>/api/
+apps/user/src/features/<name>/api/
   types.ts      ← Type contract (response shapes, filters, payloads)
   service.ts    ← Data access functions (the ONE file to swap for your backend)
   queries.ts    ← React Query options + query key factories (stable, never changes)
@@ -404,7 +360,7 @@ src/features/<name>/api/
 | **Direct external API** (frontend-only)            | `service.ts` calls external URL via `fetch()`                                               |
 | **Mock** (default)                                 | `service.ts` calls in-memory fake data stores                                               |
 
-Route handlers at `src/app/api/` are ready for patterns 2 and 3. `src/lib/api-client.ts` provides a typed `fetch` wrapper.
+Route handlers at `apps/user/src/app/api/` are ready for patterns 2 and 3. `apps/user/src/lib/api-client.ts` provides a typed `fetch` wrapper.
 
 ### Query Key Factories
 
@@ -494,7 +450,7 @@ Tables use TanStack Table with React Query:
 
 - Query options in `features/*/api/queries.ts`
 - Column definitions in `features/*/components/*-tables/columns.tsx`
-- Table component in `src/components/ui/table/data-table.tsx`
+- Table component in `apps/user/src/components/ui/table/data-table.tsx`
 - Column pinning via `initialState.columnPinning` in `useDataTable`
 
 ---
@@ -505,9 +461,9 @@ Tables use TanStack Table with React Query:
 
 Sentry is configured for both client and server:
 
-- Client config: `src/instrumentation-client.ts`
-- Server config: `src/instrumentation.ts`
-- Global error: `src/app/global-error.tsx`
+- Client config: `apps/user/src/instrumentation-client.ts`
+- Server config: `apps/user/src/instrumentation.ts`
+- Global error: `apps/user/src/app/global-error.tsx`
 
 To disable Sentry in development:
 
@@ -580,6 +536,8 @@ Both use `output: 'standalone'` in `next.config.ts`. Pass `NEXT_PUBLIC_*` vars a
 A single `scripts/cleanup.js` file handles removal of optional features:
 
 ```bash
+cd apps/user
+
 # Interactive mode — prompts for each feature
 node scripts/cleanup.js --interactive
 
@@ -603,20 +561,20 @@ node scripts/cleanup.js --list
 
 **Safety**: Script requires git repository with at least one commit. Use `--force` to skip.
 
-After cleanup, delete `scripts/cleanup.js` — the dev server message auto-cleans on next start.
+Run the cleanup script from the app directory. After cleanup, delete `scripts/cleanup.js` — the dev server message auto-cleans on next start.
 
 ---
 
 ## Icon System
 
-**All icons come from a single source: `src/components/icons.tsx`.**
+**All icons come from a single source: `packages/ui/src/components/icons.tsx`.**
 
 The project uses `@tabler/icons-react` as the sole icon package. Every icon is re-exported through a centralized `Icons` object — **never import directly from `@tabler/icons-react` or any other icon package**.
 
 ### Usage
 
 ```tsx
-import { Icons } from '@/components/icons';
+import { Icons } from '@repo/ui/components/icons';
 
 // In JSX
 <Icons.search className='h-4 w-4' />
@@ -628,12 +586,12 @@ icon={Icons.check}
 
 ### Adding a New Icon
 
-1. Import the tabler icon in `src/components/icons.tsx`
+1. Import the tabler icon in `packages/ui/src/components/icons.tsx`
 2. Add a semantic key to the `Icons` object
 3. Use `Icons.yourKey` everywhere — never the raw import
 
 ```tsx
-// In src/components/icons.tsx
+// In packages/ui/src/components/icons.tsx
 import { IconNewIcon } from '@tabler/icons-react';
 
 export const Icons = {
@@ -674,25 +632,25 @@ Browse all available icons at `/dashboard/elements/icons` — a searchable grid 
 
 ### Adding a New Feature (End-to-End)
 
-1. Create `src/features/<name>/api/types.ts` — response types, filter types, mutation payloads
-2. Create `src/features/<name>/api/service.ts` — data access functions (mock by default)
-3. Create `src/features/<name>/api/queries.ts` — query key factory + `queryOptions`
-4. Create page route: `src/app/dashboard/<name>/page.tsx`
-5. Create feature components in `src/features/<name>/components/`
-6. Add navigation item in `src/config/nav-config.ts`
-7. (Optional) Add route handlers in `src/app/api/<name>/` for REST API patterns
-8. (Optional) Register new icon in `src/components/icons.tsx`
+1. Create `apps/user/src/features/<name>/api/types.ts` — response types, filter types, mutation payloads
+2. Create `apps/user/src/features/<name>/api/service.ts` — data access functions (mock by default)
+3. Create `apps/user/src/features/<name>/api/queries.ts` — query key factory + `queryOptions`
+4. Create page route: `apps/user/src/app/dashboard/<name>/page.tsx`
+5. Create feature components in `apps/user/src/features/<name>/components/`
+6. Add navigation item in `apps/user/src/config/nav-config.ts`
+7. (Optional) Add route handlers in `apps/user/src/app/api/<name>/` for REST API patterns
+8. (Optional) Register new icon in `packages/ui/src/components/icons.tsx`
 
 ### Adding a New API Route
 
-1. Create: `src/app/api/my-route/route.ts`
+1. Create: `apps/user/src/app/api/my-route/route.ts`
 2. Export HTTP method handlers: `GET`, `POST`, etc.
 3. For BFF pattern: proxy requests to your external backend
 
 ### Adding a shadcn Component
 
 ```bash
-npx shadcn add component-name
+cd packages/ui && bunx shadcn add component-name
 ```
 
 ### Adding a New Theme
@@ -741,13 +699,13 @@ See "Theming System" section above or `docs/themes.md`.
 ## Notes for AI Agents
 
 1. **Always use `cn()` for className merging** - never concatenate strings manually
-2. **Respect the feature-based structure** - put new feature code in `src/features/`
+2. **Respect the feature-based structure** - put new feature code in `apps/user/src/features/`
 3. **Server components by default** - only add `'use client'` when using browser APIs or React hooks
 4. **Type safety first** - avoid `any`, prefer explicit types
 5. **Follow existing patterns** - look at similar components before creating new ones
 6. **Environment variables** - prefix with `NEXT_PUBLIC_` for client-side access
-7. **shadcn components** - don't modify files in `src/components/ui/` directly; extend them instead
-8. **Icons** - NEVER import icons directly from `@tabler/icons-react` or any other icon package. All icons must be registered in `src/components/icons.tsx` and imported as `import { Icons } from '@/components/icons'`. To add a new icon: add the tabler import to `icons.tsx`, add a semantic key to the `Icons` object, then use `Icons.keyName` in your component.
+7. **shadcn components** - shared primitives live in `packages/ui/src/components/ui/`; keep app-specific form integrations in `apps/user/src/components/ui/`.
+8. **Icons** - NEVER import icons directly from `@tabler/icons-react` or any other icon package. All icons must be registered in `packages/ui/src/components/icons.tsx` and imported as `import { Icons } from '@repo/ui/components/icons'`. To add a new icon: add the tabler import to `icons.tsx`, add a semantic key to the `Icons` object, then use `Icons.keyName` in your component.
 9. **Page headers** - Always use `PageContainer` props (`pageTitle`, `pageDescription`, `pageHeaderAction`) for page headers. Never import `<Heading>` manually in pages — `PageContainer` handles that internally.
 10. **Forms** - Use TanStack Form via `useAppForm` from `@/components/ui/tanstack-form`. Never use `useState` inside `AppField` render props — extract stateful logic into separate components.
 11. **Button loading** - Use `<Button isLoading={isPending}>` for loading states. Uses CSS Grid overlap trick for zero layout shift. When `isLoading` is not passed, button behaves as default shadcn. `SubmitButton` in forms handles this automatically via form `isSubmitting` state.

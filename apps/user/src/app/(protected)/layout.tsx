@@ -1,0 +1,33 @@
+import KBar from '@/components/kbar';
+import AppBootstrap from '@/components/layout/app-bootstrap';
+import AppSidebar from '@/components/layout/app-sidebar';
+import Header from '@/components/layout/header';
+import { InfoSidebar } from '@/components/layout/info-sidebar';
+import { SocketProvider } from '@/components/layout/providers/socket-provider';
+import { InfobarProvider } from '@repo/ui/components/ui/infobar';
+import { SidebarInset, SidebarProvider } from '@repo/ui/components/ui/sidebar';
+import { cookies } from 'next/headers';
+
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true';
+
+  return (
+    <AppBootstrap>
+      <SocketProvider>
+        <KBar>
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            <SidebarInset>
+              <Header />
+              <InfobarProvider defaultOpen={false}>
+                {children}
+                <InfoSidebar side='right' />
+              </InfobarProvider>
+            </SidebarInset>
+          </SidebarProvider>
+        </KBar>
+      </SocketProvider>
+    </AppBootstrap>
+  );
+}

@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+**/node_modules
 /.pnp
 .pnp.js
 package-lock.json
@@ -12,11 +12,11 @@ pnpm-lock.yaml
 /coverage
 
 # next.js
-/.next/
-/out/
+**/.next/
+**/out/
 
 # production
-/build
+**/build
 
 # misc
 .DS_Store
@@ -35,8 +35,9 @@ yarn-error.log*
 .vercel
 
 # typescript
-*.tsbuildinfo
+**/*.tsbuildinfo
 next-env.d.ts
+**/.turbo/
 
 .idea/
 # clerk configuration (can include secrets)
